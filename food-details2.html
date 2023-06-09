@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+  <link rel="stylesheet" type="text/css" >
+<title>레시피 설명</title>
+
+    <!-- JQuery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+  <style>
+    body {
+      background-color: #eaf2f8; /* 배경색을 푸르르게 설정 */
+      font-family: Arial, sans-serif; /* 텍스트 폰트 설정 */
+    }
+
+    .food-details {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px; /* 테두리를 둥글게 설정 */
+      background-color: #d6e9f8; /* 박스 배경색 설정 */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+      overflow: hidden; /* 내용이 넘칠 경우 숨김 처리 */
+      transition: height 0.3s ease; /* 높이 변경에 애니메이션 효과 추가 */
+    }
+
+    .food-details h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #285e8e; /* 제목 텍스트 색상 설정 */
+      overflow: hidden; /* 제목이 넘칠 경우 숨김 처리 */
+    }
+
+    .food-details p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #333; /* 내용 텍스트 색상 설정 */
+      overflow: auto; /* 스크롤바 표시하여 내용이 넘칠 경우 스크롤 가능 */
+    }
+
+    .food-image {
+      max-width: 300px;
+      max-height: 300px;
+      margin-bottom: 20px;
+      border-radius: 10px; /* 이미지 테두리를 둥글게 설정 */
+    }
+  </style>
+    <script>
+        
+        function read_food_title(){
+        
+            var Temp;
+
+            $.ajax({
+                url: 'readFood2.php', 
+                type: 'get',
+                dataType: 'json',
+                async :false,
+                success: function (data) {
+
+                     var formattedData = data.food_data.replace(/<br>/g, '\n');
+                     $('#data-container').html(formattedData);
+                     Temp = data.food_title;
+                },
+
+                error: function(e) {
+                    alert("");  
+                }
+            });
+
+            return Temp;
+        }
+
+        function read_food_data(){
+        
+            var Temp;
+
+            $.ajax({
+                url: 'readFood2.php', 
+                type: 'get',
+                dataType: 'json',
+                async :false,
+                success: function (data) {
+
+                     var formattedData = data.food_data.replace(/<br>/g, '\n');
+                    $('#data-container').html(formattedData);
+                    Temp = data.food_data;
+
+                },
+
+                error: function(e) {
+                    alert("");  
+                }
+            });
+
+            return Temp;
+        }
+
+    </script>
+</head>
+<body>
+
+  <div class="food-details">
+        <img src="img/수육.jpg" alt="음식 이미지" class="food-image">
+
+    <h2> 음식 이름 : <script>document.write(read_food_title())</script></h2>
+    <p> 음식 레시피 : <script>document.write(read_food_data())</script></p>
+  </div>
+
+</body>
+</html>

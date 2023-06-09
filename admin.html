@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>음식 설명 데이터 입력</title>
+    <script language="javascript">
+        function Input() 
+        {
+
+            if(document.frmInput.title.value == "") {
+                alert("please check your Title.");
+                document.frmInput.email.focus();
+                return false;
+            }
+            if(document.frmInput.data.value == "") {
+                alert("please check your Data.");
+                document.frmInput.data.focus();
+                return false;
+            }
+
+            document.frmInput.submit();
+        }
+    </script>
+</head>
+<body>
+                        
+    <form name="frmInput" action="admin.php" method="post" enctype="multipart/form-data">
+        
+        <h4>Food Info</h4>
+        
+        <label for="title">음식이름</label>
+        <input type="text" name="title" id="title" required>
+        <br><br>
+        
+        <label for="data">음식 설명</label>
+        <textarea type="text" name="data" id="data" required></textarea> 
+        <br>
+    
+        <button type="button" onclick="Input()">데이터 입력</button>
+    </form>
+   
+</body>
+</html>

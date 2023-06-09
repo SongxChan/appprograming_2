@@ -1,0 +1,5 @@
+CREATE TABLE food (
+ `food_no` int primary key auto_increment,
+ `food_title` varchar(30) DEFAULT NULL,
+ `food_data` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

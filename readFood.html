@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <!-- Website Title -->
+    <title>레시피 설명</title>
+
+    <!-- JQuery-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script>
+        
+        function read_food_title(){
+        
+            var Temp;
+
+            $.ajax({
+                url: 'readFood.php', 
+                type: 'get',
+                dataType: 'json',
+                async :false,
+                success: function (data) {
+
+                     var formattedData = data.food_data.replace(/<br>/g, '\n');
+                     $('#data-container').html(formattedData);
+                     Temp = data.food_title;
+                },
+
+                error: function(e) {
+                    alert("");  
+                }
+            });
+
+            return Temp;
+        }
+
+        function read_food_data(){
+        
+            var Temp;
+
+            $.ajax({
+                url: 'readFood.php', 
+                type: 'get',
+                dataType: 'json',
+                async :false,
+                success: function (data) {
+
+                     var formattedData = data.food_data.replace(/<br>/g, '\n');
+                    $('#data-container').html(formattedData);
+                    Temp = data.food_data;
+
+                },
+
+                error: function(e) {
+                    alert("");  
+                }
+            });
+
+            return Temp;
+        }
+
+    </script>
+
+</head>
+<body>
+
+    <h1>API를 통해 받아온 JSON 데이터를 Ajax통해 수신 후 출력</h1>
+    <p> 음식 이름 : <script>document.write(read_food_title())</script></p>
+    <p> 음식 레시피 : <script>document.write(read_food_data())</script></p>
+                        
+   
+</body>
+</html>

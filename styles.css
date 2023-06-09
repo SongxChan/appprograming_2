@@ -1,0 +1,209 @@
+@charset "UTF-8";
+/* 기본 스타일 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  font-family: 'Noto Sans KR', Arial, sans-serif; /* 폰트 적용 */
+  background-color: #f2f2f2;
+  margin: 0;
+}
+
+/* 탑 메뉴 스타일 */
+#top-menu {
+  background-color: orange; /* 주황색 탑 메뉴 */
+  padding: 10px;
+  width: 100%;
+  position: fixed; /* 화면 상단에 고정 */
+  z-index: 2; /* 삼선 아이콘이 메뉴 위에 나타나도록 설정 */
+  box-sizing: border-box; /* border와 padding이 요소의 전체 크기에 포함되도록 설정 */
+  height: 60px; /* 원하는 세로 크기로 조정하세요 */
+  display: flex;
+  justify-content: center; /* 가운데 정렬 */
+  align-items: center;
+}
+
+/* 메뉴 버튼 스타일 */
+#menu-button {
+  display: none; /* 초기에는 숨김 처리 */
+  cursor: pointer;
+}
+
+#menu-button span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 4px;
+}
+
+/* 메뉴 아이템 스타일 */
+#menu-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+#menu-items li {
+  margin-right: 10px;
+}
+
+#menu-items li a {
+  text-decoration: none;
+  color: white;
+  padding: 5px 10px;
+}
+
+/* 섹션 스타일 */
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*justify-content: center;*/
+  width: 100%;
+  height: 100vh;
+  padding-top: 40px;
+  background-color: white;
+  }
+
+  #home {
+    background-color: lightgreen;
+  }
+
+  #recipe-recommendation{
+    background-color: lightcoral;
+  }
+  #popular-recipes {
+    background-color: lightblue;
+  }
+
+  #bottom {
+    background-color: lightyellow;
+  }
+
+  #recipe-slider {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh; /* 홈 섹션과 동일한 세로 크기 */
+}
+
+.slide {
+  flex: 0 0 calc(66% - 66px); /* 너비를 33.33%로 설정하고 여백을 제외한 크기로 조정 */
+  margin: 0 210px; /* 좌우 여백 설정 */
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* 이미지 비율 유지하며 채우도록 설정 */
+}
+
+.slide-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh; /* 홈 섹션과 동일한 세로 크기 */
+}
+
+    .slide h2,
+    .slide p {
+      text-align: center;
+    }
+
+    .slide h2 {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    .slide p {
+      font-size: 16px;
+      margin-top: 5px;
+    }
+
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* 드롭다운 메뉴 스타일 */
+.dropdown-content {
+  display: none;
+  position: absolute; /* 상위 메뉴를 기준으로 위치 조정 */
+  top: 100%; /* 상위 메뉴 아래에 위치하도록 설정 */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: darkorange;
+  width: 100%; /* 탑 메뉴의 가로폭과 동일한 가로폭 */
+  padding: 10px;
+  z-index: 1;
+  text-align: center; /* 내용을 가운데 정렬 */
+}
+.dropdown-content li {
+  margin-bottom: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* 미디어 쿼리: 작은 화면에서의 스타일 조정 */
+@media only screen and (max-width: 768px) {
+  #menu-items {
+    display: none; /* 작은 화면에서는 숨김 처리 */
+  }
+  
+  #menu-button {
+    display: block; /* 작은 화면에서 보이도록 표시 */
+  }
+  
+  #top-menu {
+    flex-direction: column;
+  }
+  
+  #menu-items.open {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 화면 중앙 정렬을 위한 수정 */
+    align-items: center; /* 화면 중앙 정렬을 위한 수정 */
+    position: fixed;
+    top: 8.5%; /* 화면의 중앙으로 위치 조정 */
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 100%; /* 탑 메뉴의 가로폭과 동일한 가로폭 */
+    background-color: orangered;
+    padding: 10px;
+    z-index: 2;
+    white-space: normal; /* 드롭다운 메뉴의 위치가 벗어나지 않도록 설정 */
+    max-height: none; /* 최대 높이 제거 */
+    overflow-y: visible; /* 스크롤 제거 */
+  }
+  
+  #menu-items.open li {
+    margin-bottom: 5px;
+  }
+  
+  .section {
+    display: block;
+    padding-top: 40px;
+    background-color: white;
+    max-width: 100%; /* 섹션의 최대 가로폭 조정 */
+    margin-left: auto; /* 가운데 정렬을 위해 좌우 여백 자동 조정 */
+    margin-right: auto;
+  }
+  
+  .section.open {
+    display: block;
+  }
+}

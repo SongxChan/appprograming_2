@@ -1,0 +1,7 @@
+CREATE TABLE login_tb (
+ `member_no` int primary key auto_increment,
+ `member_name` varchar(30) DEFAULT NULL,
+ `member_email` varchar(30) DEFAULT NULL,
+ `member_pw_1` varchar(30) DEFAULT NULL,
+ `member_pw_2` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

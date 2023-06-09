@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div id="top-menu">
+    <div id="menu-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul id="menu-items">
+      <li><a href="#home">홈</a></li>
+      <li><a href="#recipe-recommendation">상단</a></li>
+      <li><a href="#popular-recipes">중단</a></li>
+      <li><a href="#bottom">하단</a></li>
+    </ul>
+  </div>
+
+  <section id="home" style="height: 100vh;" class="section">
+    <h1>이 달의 인기 메뉴</h1>
+  <div id="recipe-slider">
+    <div class="slide">
+      <a href="food-details1.html">
+      <img src="img/간장계란덮밥.jpg" alt="음식 1">
+    </a>
+      <h2>간장계란덮밥</h2>
+    </div>
+    <div class="slide">
+      <a href="food-details2.html">
+      <img src="img/수육.jpg" alt="음식 2">
+    </a>
+      <h2>수육</h2>
+    </div>
+    <div class="slide">
+      <a href="food-details3.html">
+      <img src="img/치킨너겟.jpg" alt="음식 3">
+    </a>
+      <h2>치킨너겟</h2>
+    </div>
+    <div class="slide">
+      <a href="food-details4.html">
+      <img src="img/김치볶음밥.jpg" alt="음식 4">
+    </a>
+      <h2>김치볶음밥</h2>
+    </div>
+  </div>
+</section>
+
+  <section id="recipe-recommendation" style="height: 100vh;" class="section">
+    <h1>상단 섹션</h1>
+    <!-- 요리 추천 섹션 코드 -->
+  </section>
+
+  <section id="popular-recipes" style="height: 100vh;" class="section">
+    <h1>중단 섹션</h1>
+    <!-- 인기 요리 섹션 코드 -->
+  </section>
+
+  <section id="bottom" style="height: 100vh;" class="section">
+    <h1>하단 섹션</h1>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    window.addEventListener('load', function() {
+  var slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    var slides = document.getElementsByClassName('slide');
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.transform = 'translateX(-' + (slideIndex * 150) + '%)';
+    }
+    slideIndex = (slideIndex + 1) % slides.length;
+    setTimeout(showSlides, 3000); // 3초마다 슬라이드 변경
+  }
+});
+
+  </script>
+</body>
+</html>
